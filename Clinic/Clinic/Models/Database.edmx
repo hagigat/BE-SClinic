@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SClinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="AID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="NCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cname" Type="nvarchar(max)" />
+          <Property Name="Cemail" Type="nvarchar(max)" />
+          <Property Name="Ctext" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="MCC" />
+          </Key>
+          <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MCC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FULLname" Type="nvarchar(max)" />
+          <Property Name="Expert" Type="nvarchar(max)" />
+          <Property Name="Proprietary" Type="nvarchar(max)" />
+          <Property Name="Floship" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="DSex" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Workcity" Type="nvarchar(max)" />
+          <Property Name="Workname" Type="nvarchar(max)" />
+          <Property Name="Workphone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Workaddress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Newletter">
+          <Key>
+            <PropertyRef Name="NID" />
+          </Key>
+          <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nemail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NID" />
+          </Key>
+          <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Text" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Text" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Response">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VID" Type="int" />
+          <Property Name="MCC" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rtext" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UNcode" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar(max)" />
+          <Property Name="Lname" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsValid" Type="bit" />
+          <Property Name="Token" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="VID" />
+          </Key>
+          <Property Name="VID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MCC" Type="nvarchar(max)" />
+          <Property Name="UNcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cate" Type="nvarchar(max)" />
+          <Property Name="Qtitle" Type="nvarchar(max)" />
+          <Property Name="Qtext" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+          <Property Name="Vage" Type="int" />
+          <Property Name="Vheight" Type="int" />
+          <Property Name="Vweight" Type="int" />
+          <Property Name="Qother" Type="nvarchar(max)" />
+          <Property Name="Qspecial" Type="nvarchar(max)" />
+          <Property Name="Qdrug" Type="nvarchar(max)" />
+          <Property Name="Qamal" Type="nvarchar(max)" />
+          <Property Name="Qfamily" Type="nvarchar(max)" />
+          <Property Name="Qothercase" Type="nvarchar(max)" />
+          <Property Name="Supphone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Supmail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SClinicModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Newletter" EntityType="Self.Newletter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Response" EntityType="Self.Response" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visit" EntityType="Self.Visit" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SClinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="AID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cemail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ctext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="MCC" />
+          </Key>
+          <Property Name="DID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FULLname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Proprietary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Floship" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DSex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Workcity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Workname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Workphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Workaddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Expert" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Newletter">
+          <Key>
+            <PropertyRef Name="NID" />
+          </Key>
+          <Property Name="NID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nemail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NID" />
+          </Key>
+          <Property Name="NID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Response">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VID" Type="Int32" />
+          <Property Name="MCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rtext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UNcode" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsValid" Type="Boolean" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="VID" />
+          </Key>
+          <Property Name="VID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MCC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UNcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qtext" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Vage" Type="Int32" />
+          <Property Name="Vheight" Type="Int32" />
+          <Property Name="Vweight" Type="Int32" />
+          <Property Name="Qother" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qspecial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qdrug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qamal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qfamily" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qothercase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Supphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Supmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="Newletters" EntityType="Self.Newletter" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="Responses" EntityType="Self.Response" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Visits" EntityType="Self.Visit" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SClinicModelStoreContainer" CdmEntityContainer="DB">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="SClinicModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="NCode" ColumnName="NCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="SClinicModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Cname" ColumnName="Cname" />
+                <ScalarProperty Name="Cemail" ColumnName="Cemail" />
+                <ScalarProperty Name="Ctext" ColumnName="Ctext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="SClinicModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="Expert" ColumnName="Expert" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
+                <ScalarProperty Name="MCC" ColumnName="MCC" />
+                <ScalarProperty Name="FULLname" ColumnName="FULLname" />
+                <ScalarProperty Name="Proprietary" ColumnName="Proprietary" />
+                <ScalarProperty Name="Floship" ColumnName="Floship" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DSex" ColumnName="DSex" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Workcity" ColumnName="Workcity" />
+                <ScalarProperty Name="Workname" ColumnName="Workname" />
+                <ScalarProperty Name="Workphone" ColumnName="Workphone" />
+                <ScalarProperty Name="Workaddress" ColumnName="Workaddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newletters">
+            <EntityTypeMapping TypeName="SClinicModel.Newletter">
+              <MappingFragment StoreEntitySet="Newletter">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Nemail" ColumnName="Nemail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="SClinicModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="SClinicModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responses">
+            <EntityTypeMapping TypeName="SClinicModel.Response">
+              <MappingFragment StoreEntitySet="Response">
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="VID" ColumnName="VID" />
+                <ScalarProperty Name="MCC" ColumnName="MCC" />
+                <ScalarProperty Name="Rtext" ColumnName="Rtext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SClinicModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UNcode" ColumnName="UNcode" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visits">
+            <EntityTypeMapping TypeName="SClinicModel.Visit">
+              <MappingFragment StoreEntitySet="Visit">
+                <ScalarProperty Name="VID" ColumnName="VID" />
+                <ScalarProperty Name="MCC" ColumnName="MCC" />
+                <ScalarProperty Name="UNcode" ColumnName="UNcode" />
+                <ScalarProperty Name="Cate" ColumnName="Cate" />
+                <ScalarProperty Name="Qtitle" ColumnName="Qtitle" />
+                <ScalarProperty Name="Qtext" ColumnName="Qtext" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Vage" ColumnName="Vage" />
+                <ScalarProperty Name="Vheight" ColumnName="Vheight" />
+                <ScalarProperty Name="Vweight" ColumnName="Vweight" />
+                <ScalarProperty Name="Qother" ColumnName="Qother" />
+                <ScalarProperty Name="Qspecial" ColumnName="Qspecial" />
+                <ScalarProperty Name="Qdrug" ColumnName="Qdrug" />
+                <ScalarProperty Name="Qamal" ColumnName="Qamal" />
+                <ScalarProperty Name="Qfamily" ColumnName="Qfamily" />
+                <ScalarProperty Name="Qothercase" ColumnName="Qothercase" />
+                <ScalarProperty Name="Supphone" ColumnName="Supphone" />
+                <ScalarProperty Name="Supmail" ColumnName="Supmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
