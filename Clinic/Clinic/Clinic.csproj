@@ -115,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\architectureA.png" />
     <Content Include="Global.asax" />
     <Content Include="Models\Database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -135,6 +136,7 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewlettersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VisitsController.cs" />
     <Compile Include="Global.asax.cs">
