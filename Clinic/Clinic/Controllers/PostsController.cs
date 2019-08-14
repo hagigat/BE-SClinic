@@ -19,7 +19,8 @@ namespace Clinic.Controllers
         // GET: api/Posts
         public IQueryable<Post> GetPosts()
         {
-            return db.Posts;
+        
+           return (from a in db.Posts select a).OrderByDescending(a => a.PID);
         }
 
         // GET: api/Posts/5

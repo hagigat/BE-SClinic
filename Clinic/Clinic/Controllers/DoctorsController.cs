@@ -19,7 +19,7 @@ namespace Clinic.Controllers
         // GET: api/Doctors
         public IQueryable<Doctor> GetDoctors()
         {
-            return db.Doctors;
+            return (from a in db.Doctors select a).OrderByDescending(a => a.DID);
         }
 
         // GET: api/Doctors/5
